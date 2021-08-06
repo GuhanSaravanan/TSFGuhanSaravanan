@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <title>Document</title>
+    <link rel="stylesheet" href="">
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body{
+            background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.5)),url(RBG1.jpeg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+            background-blend-mode: darken;
+            display: flex;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-position: center center;
+            align-items: center;
+            max-width: 100%;
+
+        }
+        .container{
+            position: absolute;
+            top: 50%;
+           left: 50%;
+            transform: translate(-50%,-50%);
+             background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3));
+           width: 500px;
+            padding:50px 50px;
+              border-radius: 30px;
+           box-shadow: 30px 30px 150px rgb(155, 149, 149);
+        }
+        .header{
+            text-align: center;
+            padding: 20px;
+            background-color: rgb(77, 54, 64);
+        }
+        .header h2{
+            color:#fff;
+            margin:0;
+            font-size: 30px;
+        }
+        .header i{
+            color: seashell;
+        }
+        .mainform{
+            padding: 30px 40px;
+        }
+        .form{
+            padding-bottom: 20px;
+            color:rgb(175, 136, 64);
+            margin-bottom: 10px;
+            position: relative;
+            font-size: 20px;
+        }
+        .form input{
+            border: 2px solid#888181;
+            border-radius: 6px;
+            font-family: inherit;
+            width: 100%;
+            padding: 8px;
+            display: block;
+            font-size: 14px;
+        }
+        .form i{
+            position: absolute;
+            top:32px;
+            right:10px;
+            visibility: hidden;
+        }
+        .form small{
+            position: absolute;
+            bottom: 0;
+            left: 5px;
+            font-size:14px;
+            visibility: hidden;
+        }
+        button{
+            width: 100%;
+            font-family: inherit;
+            font-size: 18px;
+            padding: 10px;
+            box-shadow:0 5px 15px  rgba(0,0,0, 0.3);
+            cursor: pointer;
+            color: #fff;
+            background-color: rgb(77, 54, 64);
+            outline: none
+            text-transform: uppercase;
+            border-radius: 10px;
+        }
+        button:hover{
+            background-color: rgb(173, 72, 72);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h2>Registration Form</h2>
+           <div><i style='font-size:24px' class='fas'>&#xf2bd;</i></div>
+        </div>
+        <form class="mainform" onsubmit="return myfun()" action="welcome.html" >
+            <div class="form">
+                <label for="username">Username</label>
+                <input type="text" placeholder="Enter Name" id="username" autocomplete="off">
+                <i class="fas success">&#xf058;</i>
+                <i class="fas error">&#xf06a;</i>
+                <small class="message">error message</small>
+            </div>
+            <div class="form">
+                <label for="mail">E-mail</label>
+                <input type="text" placeholder="Enter Mail-id" id="mail" autocomplete="off">
+                <i class="fas success">&#xf058;</i>
+                <i class="fas error">&#xf06a;</i>
+                <small class="message">error message</small>
+            </div>
+            <div class="form">
+                <label for="con">Mobile Number</label>
+                <input type="text" placeholder="Enter Mob-No" id="con" autocomplete="off">
+                <i class="fas success">&#xf058;</i>
+                <i class="fas error">&#xf06a;</i>
+                <small class="message">error message</small>
+            </div>
+            <div class="form">
+                <label for="pws">Password</label>
+                <input type="text" placeholder="Enter Password" id="pws" autocomplete="off">
+                <i class="fas success">&#xf058;</i>
+                <i class="fas error">&#xf06a;</i>
+                <small class="message">error message</small>
+            </div>
+            <div class="form">
+                <label for="pws1">Confirm Password</label>
+                <input type="text" placeholder="Re-enter Password" id="pws1" autocomplete="off">
+                <i class="fas success">&#xf058;</i>
+                <i class="fas error">&#xf06a;</i>
+                <small class="message">error message</small>
+            </div>
+            <button>Submit</button>
+        </form>
+    </div>
+     <script>
+         function myfun(){
+             const username=document.getElementById("username");
+             const mailid=document.getElementById("mail");
+             const contactnumber=document.getElementById("con");
+             const password=document.getElementById("pws");
+             const password1=document.getElementById("pws1");
+             const message=document.getElementsByClassName("message");
+             const icon=document.querySelector("i");
+             const success=document.getElementsByClassName("success");
+             const error=document.getElementsByClassName("error");
+
+             let u1=0;
+             let g1=0;
+             let c=0;
+             let p1=0;
+             let p2=0;
+
+             if(username.value==""){
+                username.style.borderColor="red";
+                message[0].style.visibility="visible";
+                message[0].style.color="red";
+                message[0].innerText="Username cannot be empty";
+                error[0].style.visibility="visible";
+                error[0].style.color="red";
+                
+             }
+             else if(username.value.length<3&&username.value.length>0){
+                username.style.borderColor="red";
+                message[0].style.visibility="visible";
+                message[0].style.color="red";
+                message[0].innerText="Username have atleast 3 character";
+                error[0].style.visibility="visible";
+                error[0].style.color="red";
+                
+             }
+             else if(username.value.length>3&&(isNaN(parseFloat(username.value)))){
+                username.style.borderColor="green";
+                error[0].style.visibility="hidden"
+                message[0].style.visibility="hidden";
+                success[0].style.visibility="visible";
+                success[0].style.color="green";
+                u1=1;
+             }
+             else{
+                username.style.borderColor="red";
+                message[0].style.visibility="visible";
+                message[0].style.color="red";
+                message[0].innerText="Number not allowed in beginning";
+                error[0].style.visibility="visible";
+                error[0].style.color="red";
+             }
+              if(mailid.value==""){
+                mailid.style.borderColor="red";
+                message[1].style.visibility="visible";
+                message[1].style.color="red";
+                message[1].innerText="E-mail cannot be empty";
+                error[1].style.visibility="visible";
+                error[1].style.color="red";   
+             }
+             else if(mailid.value.indexOf("@")<3||mailid.value.lastIndexOf(".")>=mailid.value.length-2){
+                mailid.style.borderColor="red";
+                message[1].style.visibility="visible";
+                message[1].style.color="red";
+                message[1].innerText="Invalid E-mail";
+                error[1].style.visibility="visible";
+                error[1].style.color="red";
+                
+             }
+             else{
+                mailid.style.borderColor="green";
+                error[1].style.visibility="hidden"
+                message[1].style.visibility="hidden";
+                success[1].style.visibility="visible";
+                success[1].style.color="green";
+                g1=1;
+             }
+             var number=/[0-9]/g;
+             if(contactnumber.value==""){
+                contactnumber.style.borderColor="red";
+                message[2].style.visibility="visible";
+                message[2].style.color="red";
+                message[2].innerText="Mobile Number cannot be empty";
+                error[2].style.visibility="visible"
+                error[2].style.color="red";
+             }
+             else if(contactnumber.value.match(number)&&contactnumber.value.length==10){
+                    contactnumber.style.border=document="green";
+                    message[2].style.visibility="hidden";
+                    success[2].style.visibility="visible";
+                    success[2].style.color="green";
+             }
+             else{
+                contactnumber.style.borderColor="red";
+                message[2].style.visibility="visible";
+                message[2].style.color="red";
+                message[2].innerText="Invalid Mobile Number";
+                error[2].style.visibility="visible"
+                error[2].style.color="red";
+                c=1;
+             }
+             var num=/[0-9]/g;
+             if(password.value==""){
+                password.style.borderColor="red";
+                message[3].style.visibility="visible";
+                message[3].style.color="red";
+                message[3].innerText="Password cannot be empty";
+                error[3].style.visibility="visible";
+                error[3].style.color="red";   
+             }
+             else if(password.value.length<8){
+                mailid.style.borderColor="red";
+                message[3].style.visibility="visible";
+                message[3].style.color="red";
+                message[3].innerText="Password must be minimum 8 character";
+                error[3].style.visibility="visible";
+                error[3].style.color="red";   
+             }
+             else if(!(password.value.match(num))){
+                mailid.style.borderColor="red";
+                message[3].style.visibility="visible";
+                message[3].style.color="red";
+                message[3].innerText="Password have atleast a number";
+                error[3].style.visibility="visible";
+                error[3].style.color="red";   
+             }
+             else{
+                password.style.borderColor="green";
+                message[3].style.visibility="hidden";
+                error[3].style.visibility="hidden"
+                success[3].style.visibility="visible";
+                success[3].style.color="green";  
+                p1=1;
+             }
+             if(password1.value==""){
+                  password1.style.borderColor="red";
+                message[4].style.visibility="visible";
+                message[4].style.color="red";
+                message[4].innerText="Re-Enter Password";
+                error[4].style.visibility="visible";
+                error[4].style.color="red";   
+             }
+             else if(password.value!=password1.value) {
+                 password.style.borderColor="red";
+                message[4].style.visibility="visible";
+                message[4].style.color="red";
+                message[4].innerText="Password doesnot match";
+                error[4].style.visibility="visible";
+                error[4].style.color="red";   
+             }
+             else {
+                password1.style.borderColor="green";
+                message[4].style.visibility="hidden";
+                error[4].style.visibility="hidden"
+                success[4].style.visibility="visible";
+                success[4].style.color="green";  
+                p2=1;  
+             }
+             if(u1==1&&g1==1&&c==1&&p1==1&&p2==1){
+                 return true
+             }
+             else
+             return false;
+         }
+     </script>
+</body>
+</html>

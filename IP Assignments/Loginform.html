@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <link rel="stylesheet" href="LFSS.css">
+    <title>Login</title>
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+</head>
+<body>
+
+    <section>
+        <div class="form-content">
+            <h1>Login </h1>
+            <form onsubmit="return fun()" action="welcome.html">
+                <div class="control">
+                    <label for="Username">Username</label>
+                    <input type="text" name="Username" id="Username" autocomplete="off">
+                    <i class="fas success">&#xf058;</i>
+                    <i class="fas error">&#xf06a;</i>
+                    <small class="message">error message</small>
+                </div>
+                <div class="control">
+                    <label for="psw">Password</label>
+                    <input type="Password" name="psw" id="psw" autocomplete="off">
+                    <i class="fas success">&#xf058;</i>
+                    <i class="fas error">&#xf06a;</i>
+                    <small class="message" >error message</small>
+                </div>
+                <span><input type="checkbox" name="" id=""> Remember me</span>
+                <div class="control">
+                    <input type="submit" value="Login">
+                </div>
+                <div  class="control" style="text-align: center;">
+                    <a  href="Untitled-1.html">Register if new</a>
+                </div>
+            </form>
+    
+        </div>
+    </section>
+    <script>
+        function fun(){
+        const username=document.getElementById("Username");
+        const password=document.getElementById("psw");
+        const message=document.getElementsByClassName("message");
+        
+        const success=document.getElementsByClassName("success");
+        const error=document.getElementsByClassName("error");
+        let u=0;
+        let p=0;
+
+        if(username.value==""){
+                username.style.borderColor="red";
+                message[0].style.visibility="visible";
+                message[0].style.color="red";
+                message[0].innerText="Username cannot be empty";
+                error[0].style.visibility="visible";
+                error[0].style.color="red";
+                
+                
+             }
+             else if(username.value.length<3&&username.value.length>0){
+                username.style.borderColor="red";
+                message[0].style.visibility="visible";
+                message[0].style.color="red";
+                message[0].innerText="Incorrect Username";
+                error[0].style.visibility="visible";
+                error[0].style.color="red";
+                
+             }
+             else if(username.value.length>3&&(isNaN(parseFloat(username.value)))){
+                username.style.borderColor="green";
+                error[0].style.visibility="hidden"
+                message[0].style.visibility="hidden";
+                success[0].style.visibility="visible";
+                success[0].style.color="green";
+                u=1;
+             }
+             else{
+                username.style.borderColor="red";
+                message[0].style.visibility="visible";
+                message[0].style.color="red";
+                message[0].innerText="Incorrect Username";
+                error[0].style.visibility="visible";
+                error[0].style.color="red";
+        
+             }
+             var num=/[0-9]/g;
+             if(password.value==""){
+                password.style.borderColor="red";
+                message[1].style.visibility="visible";
+                message[1].style.color="red";
+                message[1].innerText="Password cannot be empty";
+                error[1].style.visibility="visible";
+                error[1].style.color="red";   
+             }
+             else if(password.value.length<8){
+                mailid.style.borderColor="red";
+                message[1].style.visibility="visible";
+                message[1].style.color="red";
+                message[1].innerText="Password must be minimum 8 character";
+                error[1].style.visibility="visible";
+                error[1].style.color="red";   
+             }
+             else if(!(password.value.match(num))){
+                mailid.style.borderColor="red";
+                message[1].style.visibility="visible";
+                message[1].style.color="red";
+                message[1].innerText="Password have atleast a number";
+                error[1].style.visibility="visible";
+                error[1].style.color="red";   
+             }
+             else{
+                password.style.borderColor="green";
+                message[1].style.visibility="hidden";
+                error[1].style.visibility="hidden"
+                success[1].style.visibility="visible";
+                success[1].style.color="green";  
+                p=1;
+             }
+             if(u==1&&p==1){
+                    return true;
+             }
+             else
+             return false;
+            }
+    </script>
+</body>
+</html>
